@@ -1,0 +1,47 @@
+:root {
+  --bg:#0f1724; --card:#1e293b; --text:#e2e8f0; --accent:#006eff;
+  --glass: rgba(255,255,255,0.04); --radius:14px; --gap:16px; --shadow:0 10px 30px rgba(2,6,23,0.6);
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text);}
+a{color:inherit;text-decoration:none;}
+
+.wrap{max-width:1100px;margin:28px auto;padding:20px;}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.logo img{height:48px;width:auto;border-radius:8px;}
+h1{margin:0;font-size:20px;}
+.controls{display:flex;gap:10px;flex-wrap:wrap;}
+.btn{padding:10px 16px;border-radius:10px;border:none;background:var(--accent);color:white;cursor:pointer;transition:all .3s;}
+.btn.ghost{background:transparent;border:1px solid var(--glass);color:inherit;}
+.btn:hover{opacity:.85;}
+
+.layout{display:grid;grid-template-columns:1fr 320px;gap:20px;margin-top:20px;}
+@media(max-width:880px){.layout{grid-template-columns:1fr;}}
+main{display:flex;flex-direction:column;gap:16px;}
+.panel{background:var(--card);border-radius:var(--radius);padding:16px;border:1px solid var(--glass);box-shadow:var(--shadow);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--gap);}
+
+.subject{background:var(--card);border-radius:var(--radius);padding:16px;border:1px solid var(--glass);backdrop-filter: blur(4px);transition:transform .3s,box-shadow .3s;position:relative;}
+.subject:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(2,6,23,0.35);}
+.subject-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.name-row{display:flex;align-items:center;gap:10px;}
+.subject-name{font-weight:600;}
+.subject-avg{font-size:13px;color:var(--text);opacity:.7;}
+.grades{margin-top:10px;}
+.grade-row{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
+.grade-row input{width:60px;padding:6px 8px;border-radius:8px;border:1px solid var(--glass);background:transparent;color:inherit;}
+.grade-actions button{background:transparent;border:none;color:red;cursor:pointer;font-weight:700;}
+
+/* Quick Add on Card */
+.quick-add{display:flex;gap:6px;margin-top:10px;align-items:center;}
+.quick-add input{flex:1;padding:6px 8px;border-radius:8px;border:1px solid var(--glass);background:transparent;color:inherit;}
+.quick-add button{padding:6px 10px;border-radius:8px;border:none;background:var(--accent);color:white;cursor:pointer;}
+
+/* Badges */
+.badge{position:absolute;top:10px;right:10px;padding:4px 8px;border-radius:8px;background:#22c55e;color:#0f1724;font-size:12px;font-weight:700;animation:fadeIn 0.5s;}
+@keyframes fadeIn{from{opacity:0;transform:scale(0.5);}to{opacity:1;transform:scale(1);}}
+
+.md-field{position:relative;margin-bottom:6px;}
+.md-field input{width:100%;padding:12px 10px;border:none;border-bottom:2px solid var(--glass);background:transparent;color:inherit;border-radius:8px;outline:none;}
+.md-field label{position:absolute;left:10px;top:12px;color:rgba(255,255,255,0.5);pointer-events:none;transition:all .2s;}
+.md-field input:focus + label,.md-field input:not(:placeholder-shown) + label{top:-8px;font-size:12px;color:var(--accent);}

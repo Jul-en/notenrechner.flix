@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noten App Pro</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><img src="Logo.jpg" alt="Logo"></div>
+    <h1>Noten App</h1>
+    <div class="controls">
+      <select id="sortSelect" class="btn ghost">
+        <option value="default">Sortieren</option>
+        <option value="alpha">Alphabetisch</option>
+        <option value="avg">Durchschnitt</option>
+        <option value="count">Anzahl Noten</option>
+      </select>
+      <select id="filterSelect" class="btn ghost">
+        <option value="all">Alle Fächer</option>
+        <option value="good">Durchschnitt ≥ 3</option>
+        <option value="bad">Durchschnitt < 3</option>
+      </select>
+      <button id="pdfBtn" class="btn">PDF Export</button>
+      <button id="resetBtn" class="btn ghost">Reset</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <main>
+      <div class="panel add-subject-panel">
+        <div class="add-subject-row">
+          <div class="md-field">
+            <input id="subjectName" placeholder=" ">
+            <label>Fachname</label>
+          </div>
+          <input type="color" id="subjectColor" value="#7c3aed">
+          <button class="btn" id="addSubjectBtn">+</button>
+        </div>
+      </div>
+      <div id="grid" class="grid"></div>
+    </main>
+
+    <aside>
+      <div class="panel stats-panel">
+        <div>Gesamt-Durchschnitt:</div>
+        <div id="globalAvg" class="avg-display">–</div>
+        <div>Fächer: <span id="subjectCount">0</span></div>
+        <div>Noten: <span id="gradesCount">0</span></div>
+        <canvas id="chart" style="margin-top:20px;"></canvas>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
